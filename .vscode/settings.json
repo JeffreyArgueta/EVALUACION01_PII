@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "string": "cpp",
+        "ostream": "cpp",
+        "new": "cpp",
+        "ios": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled",
+    "editor.guides.bracketPairs": true
+}
