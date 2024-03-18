@@ -1,5 +1,5 @@
-#ifndef CLIENTE_H_INCLUDED
-#define CLIENTE_H_INCLUDED
+#ifndef CLIENTE_H
+#define CLIENTE_H
 
 #include <iostream>
 #include <string.h>

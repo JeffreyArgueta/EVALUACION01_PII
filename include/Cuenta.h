@@ -1,5 +1,5 @@
-#ifndef CUENTA_H_INCLUDED
-#define CUENTA_H_INCLUDED
+#ifndef CUENTA_H
+#define CUENTA_H
 
 #include "Cliente.h"
 #include "Abono.h"
@@ -14,13 +14,13 @@ class Cuenta {
         int contadorAbonos;
     public:
         Cuenta();
-        Cuenta(int, Cliente);
+        Cuenta(int nc = 0, Cliente c = Cliente(0,"",""));
         virtual ~Cuenta();
         int getNumeroCuenta();
         void setNumeroCuenta(int);
         Cliente getCliente();
         void setCliente(Cliente);
-        bool agregarAbono(Abono);
+        bool agregarAbono(Abono*);
         Abono **getLstAbonos();
         float getSaldo();
         int getContadorAbonos();

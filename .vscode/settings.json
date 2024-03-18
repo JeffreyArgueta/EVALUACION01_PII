@@ -1,5 +1,7 @@
 {
     "files.associations": {
+        "*.cpp": "cpp",
+        "*.h": "cpp",
         "iostream": "cpp",
         "string": "cpp",
         "ostream": "cpp",
@@ -7,5 +9,6 @@
         "ios": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "editor.guides.bracketPairs": true
+    "editor.guides.bracketPairs": true,
+    "C_Cpp.default.includePath": ["${workspaceFolder}/include"]
 }

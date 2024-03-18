@@ -1,5 +1,5 @@
-#ifndef FECHA_H_INCLUDED
-#define FECHA_H_INCLUDED
+#ifndef FECHA_H
+#define FECHA_H
 
 #include <iostream>
 

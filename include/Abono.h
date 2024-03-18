@@ -1,5 +1,5 @@
-#ifndef ABONO_H_INCLUDED
-#define ABONO_H_INCLUDED
+#ifndef ABONO_H
+#define ABONO_H
 
 #include "Fecha.h"
 class Abono {

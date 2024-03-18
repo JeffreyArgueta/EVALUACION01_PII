@@ -1,6 +1,6 @@
 #include "../include/Abono.h"
 
-Abono::Abono(Fecha fa = Fecha(fa), float ma = 0.00) {
+Abono::Abono(Fecha fa = Fecha(0,0,0), float ma = 0.00) : fechaAbono(fa) {
     this->fechaAbono = fa;
     this->montoAbono = ma;
 }
@@ -12,5 +12,5 @@ Fecha Abono::getFechaAbono() {
 }
 
 float Abono::getMontoAbono() {
-    return this->getMontoAbono;
+    return this->montoAbono;
 }
