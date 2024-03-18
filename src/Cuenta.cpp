@@ -1,7 +1,7 @@
 #include "../include/Cuenta.h"
 #define DA 5
 
-Cuenta::Cuenta() : cliente(Cliente(0,"","")) {
+Cuenta::Cuenta() : cliente(Cliente(0,"","")), saldo(0) {
     this->numeroCuenta = 0;
     this->saldo = 0;
     this->contadorAbonos = 0;
