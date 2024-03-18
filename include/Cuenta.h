@@ -1,5 +1,5 @@
-#ifndef CUENTA_H_INCLUDED
-#define CUENTA_H_INCLUDED
+#ifndef CUENTA_H
+#define CUENTA_H
 
 #include "Cliente.h"
 #include "Abono.h"
@@ -20,7 +20,7 @@ class Cuenta {
         void setNumeroCuenta(int);
         Cliente getCliente();
         void setCliente(Cliente);
-        bool agregarAbono(Abono);
+        bool agregarAbono(Abono*);
         Abono **getLstAbonos();
         float getSaldo();
         int getContadorAbonos();

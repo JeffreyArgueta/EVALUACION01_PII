@@ -1,15 +1,15 @@
-#ifndef ABONO_H_INCLUDED
-#define ABONO_H_INCLUDED
+#ifndef ABONO_H
+#define ABONO_H
 
 #include "Fecha.h"
 class Abono {
     private:
-        Fecha fechaAbono;
+        Fecha *fechaAbono;
         float montoAbono;
     public:
-        Abono(Fecha, float);
+        Abono(Fecha*, float);
         virtual ~Abono();
-        Fecha getFechaAbono();
+        Fecha *getFechaAbono();
         float getMontoAbono();
 };
 

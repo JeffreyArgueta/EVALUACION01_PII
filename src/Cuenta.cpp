@@ -1,15 +1,16 @@
 #include "../include/Cuenta.h"
 #define DA 5
 
-Cuenta::Cuenta() {
+Cuenta::Cuenta() : cliente(Cliente(0,"","")) {
     this->numeroCuenta = 0;
     this->saldo = 0;
     this->contadorAbonos = 0;
 }
 
-Cuenta::Cuenta(int nc, Cliente c) {
+Cuenta::Cuenta(int nc = 0, Cliente c = Cliente(0,"","")) : cliente(c) {
     this->numeroCuenta = nc;
     this->cliente = c;
+    this->saldo = 0;
     this->contadorAbonos = 0;
 }
 
@@ -41,7 +42,7 @@ bool Cuenta::agregarAbono(Abono *ab) {
     return false;
 }
 
-Abono Cuenta::getLstAbonos() {
+Abono **Cuenta::getLstAbonos() {
     return this->lstAbonos;
 }
 
