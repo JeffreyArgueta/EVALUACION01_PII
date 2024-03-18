@@ -109,8 +109,8 @@ void verDetallesCuenta(Cuenta *cuenta) {
         cout<<"\n"<<setw(WIDTH)<<"Fecha"<<setw(WIDTH)<<"Abono"<<endl;
         Abono **lst = cuenta->getLstAbonos();
         for (int i = 0; i < cuenta->getContadorAbonos(); i++) {
-            lst[i]->getFechaAbono().mostrarFecha();
-            cout<<setw(WIDTH)<<lst[i]->getMontoAbono()<<endl;
+            lst[i]->getFechaAbono()->mostrarFecha();
+            cout<<setw(WIDTH/4)<<""<<lst[i]->getMontoAbono()<<endl;
         }
     }
     else {
@@ -179,7 +179,7 @@ int main() {
                         cout<<"Mes: "; cin>>mes;
                         cout<<"Anio: "; cin>>anio;
                         cout<<"-------------------------"<<endl;
-                        Fecha fecha = Fecha(dia, mes, anio);
+                        Fecha *fecha = new Fecha(dia, mes, anio);
                         cout<<"Ingrese el monto del abono: "; cin>>montoAbono;
                         Abono *A = new Abono(fecha, montoAbono);
                         if (cuenta->agregarAbono(A)) {

@@ -14,7 +14,7 @@ class Cuenta {
         int contadorAbonos;
     public:
         Cuenta();
-        Cuenta(int nc = 0, Cliente c = Cliente(0,"",""));
+        Cuenta(int, Cliente);
         virtual ~Cuenta();
         int getNumeroCuenta();
         void setNumeroCuenta(int);

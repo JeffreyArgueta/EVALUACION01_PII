@@ -4,12 +4,12 @@
 #include "Fecha.h"
 class Abono {
     private:
-        Fecha fechaAbono;
+        Fecha *fechaAbono;
         float montoAbono;
     public:
-        Abono(Fecha, float);
+        Abono(Fecha*, float);
         virtual ~Abono();
-        Fecha getFechaAbono();
+        Fecha *getFechaAbono();
         float getMontoAbono();
 };
 
