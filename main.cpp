@@ -2,7 +2,7 @@
 #include <iomanip>
 #include "include/Cuenta.h"
 #define DIM 10
-#define WIDTH 14
+#define WIDTH 12
 
 using namespace std;
 
