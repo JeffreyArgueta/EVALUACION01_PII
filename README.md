@@ -1,4 +1,4 @@
-# Ejercicio 2
+# Ejercicio
 Elaborar un programa que permita imprimir el menu que se presenta a continuación y programar la funcionalidad de cada opción.
 
 MENU DE OPCIONES
