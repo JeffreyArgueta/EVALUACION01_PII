@@ -1,4 +1,4 @@
-#include "Abono.h"
+#include "../include/Abono.h"
 
 Abono::Abono(Fecha fa = Fecha(fa), float ma = 0.00) {
     this->fechaAbono = fa;

@@ -1,4 +1,4 @@
-#include "Cliente.h"
+#include "../include/Cliente.h"
 
 Cliente::Cliente(int id = 0, string n = "", string a = "") {
     this->idCliente = id;
