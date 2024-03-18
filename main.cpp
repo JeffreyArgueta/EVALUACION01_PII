@@ -2,7 +2,7 @@
 #include <iomanip>
 #include "include/Cuenta.h"
 #define DIM 10
-#define WIDTH 12
+#define WIDTH 14
 
 using namespace std;
 
@@ -109,7 +109,7 @@ void verDetallesCuenta(Cuenta *cuenta) {
         cout<<"\n"<<setw(WIDTH)<<"Fecha"<<setw(WIDTH)<<"Abono"<<endl;
         Abono **lst = cuenta->getLstAbonos();
         for (int i = 0; i < cuenta->getContadorAbonos(); i++) {
-            cout<<setw(WIDTH); lst[i]->getFechaAbono().mostrarFecha();
+            lst[i]->getFechaAbono().mostrarFecha();
             cout<<setw(WIDTH)<<lst[i]->getMontoAbono()<<endl;
         }
     }
