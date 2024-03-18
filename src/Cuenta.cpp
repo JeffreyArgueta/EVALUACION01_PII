@@ -1,4 +1,4 @@
-#include "Cuenta.h"
+#include "../include/Cuenta.h"
 #define DA 5
 
 Cuenta::Cuenta() {
