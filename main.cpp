@@ -6,8 +6,8 @@
 
 using namespace std;
 
-int menu() {
-    int op;
+char menu() {
+    char op;
     cout<<"1. Agregar cliente a la lista"<<endl;
     cout<<"2. Agregar cuenta a la lista"<<endl;
     cout<<"3. Hacer abonos"<<endl;
@@ -106,7 +106,6 @@ void verDetallesCuenta(Cuenta *cuenta) {
     cout<<"Saldo: "<<cuenta->getSaldo()<<endl;
 
     if (cuenta->getContadorAbonos() > 0) {
-        cout<<left;
         cout<<"\n"<<setw(WIDTH)<<"Fecha"<<setw(WIDTH)<<"Abono"<<endl;
         Abono **lst = cuenta->getLstAbonos();
         for (int i = 0; i < cuenta->getContadorAbonos(); i++) {
@@ -120,7 +119,7 @@ void verDetallesCuenta(Cuenta *cuenta) {
 }
 
 int main() {
-    int op;
+    char op;
     Cuenta objCuenta = Cuenta(0,Cliente(0,"",""));
     Cliente *lstClientes[DIM];
     Cuenta *lstCuentas[DIM];
@@ -129,7 +128,7 @@ int main() {
         system("cls");
         op = menu();
         switch (op) {
-            case 1:
+            case '1':
                 /* AGREGAR CLIENTE A LA LISTA */
                 {
                     if (contCliente < DIM) {
@@ -142,7 +141,7 @@ int main() {
                     }
                 }
                 break;
-            case 2:
+            case '2':
                 /* AGREGAR CUENTA A LA LISTA */
                 {
                     if (contCuenta < DIM) {
@@ -153,7 +152,7 @@ int main() {
                         if (cliente) {
                             lstCuentas[contCuenta] = agregarCuenta(*cliente);
                             contCuenta++;
-                            cout<<"Cuente agregada exitosamente!"<<endl;
+                            cout<<"Cuenta agregada exitosamente!"<<endl;
                         }
                         else {
                             cout<<"ID del cliente no existe. No se pudo agregar la cuenta."<<endl;
@@ -164,7 +163,7 @@ int main() {
                     }
                 }
                 break;
-            case 3:
+            case '3':
                 /* HACER ABONO */
                 {
                     int numeroCuenta;
@@ -195,19 +194,19 @@ int main() {
                     }
                 }
                 break;
-            case 4:
+            case '4':
                 /* MOSTRAR LISTA DE CLIENTES */
                 {
                     mostrarListaClientes(lstClientes, contCliente);
                 }
                 break;
-            case 5:
+            case '5':
                 /* MOSTRAR LISTA DE CUENTAS */
                 {
                     mostrarListaCuentas(lstCuentas, contCuenta);
                 }
                 break;
-            case 6:
+            case '6':
                 /* MOSTRAR DETALLES DE LA CUENTA */
                 {
                     int numeroCuenta;
@@ -221,7 +220,7 @@ int main() {
                     }
                 }
                 break;
-            case 7:
+            case '7':
                 /* SALIR */
                 cout<<"Saliendo del programa"<<endl;
                 break;
@@ -230,6 +229,6 @@ int main() {
                 break;
         }
         system("pause");
-    } while (op != 7);
+    } while (op != '7');
     return 0;
 }
