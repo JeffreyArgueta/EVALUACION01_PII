@@ -25,6 +25,6 @@ Muestra la lista de clientes y cuentas respectivamente.
 ## Opción 6
 Solicita el número de cuenta, el cual es buscado en el arreglo de cuentas, una vez es encontrado muestra los detalles de la cuenta (incluyendo los abonos), caso contrario notifica que no existe la cuenta
 
-### Se requiere modelar las clases según el siguiente diseño:
+## Modelado de clases
 
 <img width="1199" alt="Diagrama" src="https://github.com/JeffreyArgueta/EVALUACION01_PII/assets/163624985/650ea8c9-9559-42a9-89bc-8fc7f4e0f07e">
