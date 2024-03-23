@@ -1,21 +1,17 @@
 #include "../include/Cliente.h"
 
-Cliente::Cliente(int id = 0, string n = "", string a = "") {
-    this->idCliente = id;
-    this->nombre = n;
-    this->apellido = a;
-}
+Cliente::Cliente(int id = 0, std::string n = "", std::string a = "") : idCliente(id), nombre(n), apellido(a) {}
 
 Cliente::~Cliente() {}
 
-int Cliente::getIdCliente() {
+int Cliente::getIdCliente() const {
     return this->idCliente;
 }
 
-string Cliente::getNombre() {
+std::string Cliente::getNombre() const {
     return this->nombre;
 }
 
-string Cliente::getApellido() {
+std::string Cliente::getApellido() const {
     return this->apellido;
 }

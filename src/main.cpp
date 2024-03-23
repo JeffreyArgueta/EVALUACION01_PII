@@ -1,6 +1,5 @@
-#include <iostream>
 #include <iomanip>
-#include "include/Cuenta.h"
+#include "../include/Cuenta.h"
 #define DIM 10
 #define WIDTH 12
 
@@ -30,8 +29,9 @@ Cliente *agregarCliente() {
 
     return C;
 }
+
 Cliente *buscarCliente(Cliente *lstClientes[], int contCliente, int idCliente) {
-    Cliente *C;
+    Cliente *C = nullptr;
     int contInt = 0;
     bool encontrado = false;
 
@@ -47,8 +47,10 @@ Cliente *buscarCliente(Cliente *lstClientes[], int contCliente, int idCliente) {
     
     return C;
 }
+
 void mostrarListaClientes(Cliente *lstClientes[], int contCliente) {
     if (contCliente > 0) {
+        system("cls");
         cout<<left;
         cout<<setw(WIDTH)<<"ID"<<setw(WIDTH)<<"Nombre"<<setw(WIDTH)<<"Apellido"<<endl;
         for (int i = 0; i < contCliente; i++) {
@@ -56,11 +58,13 @@ void mostrarListaClientes(Cliente *lstClientes[], int contCliente) {
             cout<<setw(WIDTH)<<lstClientes[i]->getNombre();
             cout<<setw(WIDTH)<<lstClientes[i]->getApellido()<<endl;
         }
+        cout<<endl;
     }
     else {
-        cout<<"Lista de clientes vacia."<<endl;
+        cout<<"\nLista de clientes vacia.\n"<<endl;
     }
 }
+
 Cuenta *agregarCuenta(Cliente cliente) {
     int numeroCuenta;
 
@@ -69,8 +73,9 @@ Cuenta *agregarCuenta(Cliente cliente) {
 
     return C;
 }
+
 Cuenta *buscarCuenta(Cuenta *lstCuentas[], int contCuenta, int numeroCuenta) {
-    Cuenta *C;
+    Cuenta *C = nullptr;
     int contInt = 0;
     bool encontrado = false;
     
@@ -86,8 +91,10 @@ Cuenta *buscarCuenta(Cuenta *lstCuentas[], int contCuenta, int numeroCuenta) {
     
     return C;
 }
+
 void mostrarListaCuentas(Cuenta *lstCuentas[], int contCuenta) {
     if (contCuenta > 0) {
+        system("cls");
         cout<<setw(WIDTH)<<"No."<<setw(WIDTH)<<"Nombre"<<setw(WIDTH)<<"Apellido"<<setw(WIDTH)<<"Saldo"<<endl;
         for (int i = 0; i < contCuenta; i++) {
             cout<<setw(WIDTH)<<lstCuentas[i]->getNumeroCuenta();
@@ -95,35 +102,44 @@ void mostrarListaCuentas(Cuenta *lstCuentas[], int contCuenta) {
             cout<<setw(WIDTH)<<lstCuentas[i]->getCliente().getApellido();
             cout<<setw(WIDTH)<<lstCuentas[i]->getSaldo()<<endl;
         }
+        cout<<endl;
     }
     else {
-        cout<<"Lista de cuentas vacia."<<endl;
+        cout<<"\nLista de cuentas vacia.\n"<<endl;
     }
 }
+
 void verDetallesCuenta(Cuenta *cuenta) {
-    cout<<"No. cuenta: "<<cuenta->getNumeroCuenta()<<endl;
+    cout<<"\nNo. cuenta: "<<cuenta->getNumeroCuenta()<<endl;
     cout<<"Cliente: "<<cuenta->getCliente().getNombre()<<" "<<cuenta->getCliente().getApellido()<<endl;
     cout<<"Saldo: "<<cuenta->getSaldo()<<endl;
 
+    cout<<"\n--------- ABONOS ---------"<<endl;
+    
     if (cuenta->getContadorAbonos() > 0) {
-        cout<<"\n"<<setw(WIDTH)<<"Fecha"<<setw(WIDTH)<<"Abono"<<endl;
-        Abono **lst = cuenta->getLstAbonos();
+        cout<<setw(WIDTH)<<"Abono"<<setw(WIDTH)<<"Fecha"<<endl;
+
+        Abono *const *lst = cuenta->getLstAbonos();
+
         for (int i = 0; i < cuenta->getContadorAbonos(); i++) {
+            cout<<setw(WIDTH)<<lst[i]->getMontoAbono();
             lst[i]->getFechaAbono()->mostrarFecha();
-            cout<<setw(WIDTH/4)<<""<<lst[i]->getMontoAbono()<<endl;
+            cout<<endl;
         }
     }
     else {
-        cout<<"\nNo tiene abonos realizados."<<endl;
+        cout<<"- Sin abonos realizados"<<endl;
     }
+
+    cout<<"--------------------------\n"<<endl;
 }
 
 int main() {
     char op;
-    Cuenta objCuenta = Cuenta(0,Cliente(0,"",""));
     Cliente *lstClientes[DIM];
     Cuenta *lstCuentas[DIM];
-    int contCuenta = 0, contCliente = 0;
+    int contCliente = 0, contCuenta = 0;
+
     do {
         system("cls");
         op = menu();
@@ -131,66 +147,77 @@ int main() {
             case '1':
                 /* AGREGAR CLIENTE A LA LISTA */
                 {
+                    system("cls");
                     if (contCliente < DIM) {
                         lstClientes[contCliente] = agregarCliente();
                         contCliente++;
-                        cout<<"Cliente agregado exitosamente!"<<endl;    
+                        cout<<"\nCliente agregado exitosamente!\n"<<endl;    
                     }
                     else {
-                        cout<<"Lista de clientes llena."<<endl;
+                        cout<<"Lista de clientes llena.\n"<<endl;
                     }
                 }
                 break;
             case '2':
                 /* AGREGAR CUENTA A LA LISTA */
                 {
+                    system("cls");
                     if (contCuenta < DIM) {
                         int idCliente;
 
                         cout<<"Ingrese el ID del cliente que abrira la cuenta: "; cin>>idCliente;
                         Cliente *cliente = buscarCliente(lstClientes, contCliente, idCliente);
-                        if (cliente) {
+                        if (cliente != nullptr) {
                             lstCuentas[contCuenta] = agregarCuenta(*cliente);
                             contCuenta++;
-                            cout<<"Cuenta agregada exitosamente!"<<endl;
+                            cout<<"\nCuenta agregada exitosamente!\n"<<endl;
                         }
                         else {
-                            cout<<"ID del cliente no existe. No se pudo agregar la cuenta."<<endl;
+                            cout<<"\nID del cliente no existe. No se pudo agregar la cuenta.\n"<<endl;
                         }
                     }
                     else {
-                        cout<<"Lista de cuentas llena."<<endl;
+                        cout<<"Lista de cuentas llena.\n"<<endl;
                     }
                 }
                 break;
             case '3':
                 /* HACER ABONO */
                 {
+                    system("cls");
                     int numeroCuenta;
 
                     cout<<"Ingrese el numero de la cuenta a la cual abonar: "; cin>>numeroCuenta;
                     Cuenta *cuenta = buscarCuenta(lstCuentas, contCuenta, numeroCuenta);
-                    if (cuenta) {
-                        int dia, mes, anio;
-                        float montoAbono;
+                    if (cuenta != nullptr) {
+                        if (cuenta->getContadorAbonos() < DA) {
+                            int dia, mes, anio;
+                            float montoAbono;
 
-                        cout<<"---- FECHA DEL ABONO ----"<<endl;
-                        cout<<"Dia: "; cin>>dia;
-                        cout<<"Mes: "; cin>>mes;
-                        cout<<"Anio: "; cin>>anio;
-                        cout<<"-------------------------"<<endl;
-                        Fecha *fecha = new Fecha(dia, mes, anio);
-                        cout<<"Ingrese el monto del abono: "; cin>>montoAbono;
-                        Abono *A = new Abono(fecha, montoAbono);
-                        if (cuenta->agregarAbono(A)) {
-                            cout<<"Abono realizado exitosamente!"<<endl;
+                            cout<<endl;
+                            cout<<"---- FECHA DEL ABONO ----"<<endl;
+                            cout<<"Dia: "; cin>>dia;
+                            cout<<"Mes: "; cin>>mes;
+                            cout<<"Anio: "; cin>>anio;
+                            cout<<"-------------------------"<<endl;
+                            cout<<"Ingrese el monto del abono: "; cin>>montoAbono;
+
+                            Fecha *fecha = new Fecha(dia, mes, anio);
+                            Abono *A = new Abono(fecha, montoAbono);
+
+                            if (cuenta->agregarAbono(A)) {
+                                cout<<"\nAbono realizado exitosamente!\n"<<endl;
+                            }
+                            else {
+                                cout<<"\nError, no se pudo agregar el abono.\n"<<endl;
+                            }
                         }
                         else {
-                            cout<<"Has alcanzado la cantidad maxima de abonos. No se pudo realizar el abono."<<endl;
+                            cout<<"\nEsta cuenta ya alcanzo su limite de abonos.\n"<<endl;
                         }
                     }
                     else {
-                        cout<<"El numero de la cuenta no existe."<<endl;
+                        cout<<"\nEl numero de la cuenta no existe.\n"<<endl;
                     }
                 }
                 break;
@@ -209,26 +236,40 @@ int main() {
             case '6':
                 /* MOSTRAR DETALLES DE LA CUENTA */
                 {
-                    int numeroCuenta;
-                    cout<<"Ingrese el numero de la cuenta a mostrar: "; cin>>numeroCuenta;
-                    Cuenta *cuenta = buscarCuenta(lstCuentas, contCuenta, numeroCuenta);
-                    if (cuenta) {
-                        verDetallesCuenta(cuenta);
+                    if (contCuenta > 0) {
+                        system("cls");
+                        int numeroCuenta;
+
+                        cout<<"Ingrese el numero de la cuenta a mostrar: "; cin>>numeroCuenta;
+                        Cuenta *cuenta = buscarCuenta(lstCuentas, contCuenta, numeroCuenta);
+
+                        if (cuenta != nullptr) {
+                            verDetallesCuenta(cuenta);
+                        }
+                        else {
+                            cout<<"\nNumero de cuenta incorrecto o inexistente.\n"<<endl;
+                        }
                     }
                     else {
-                        cout<<"El numero de la cuenta no existe."<<endl;
+                        cout<<"\nNo existen cuentas a mostrar.\n"<<endl;
                     }
                 }
                 break;
             case '7':
                 /* SALIR */
-                cout<<"Saliendo del programa"<<endl;
+                {
+                    system("cls");
+                    cout<<"Saliendo del programa...\n"<<endl;
+                }
                 break;
             default:
-                cout<<"Error, opcion no esta definida"<<endl;
+                {
+                    cout<<"\nError, opcion no esta definida.\n"<<endl;
+                }
                 break;
         }
         system("pause");
     } while (op != '7');
+
     return 0;
 }

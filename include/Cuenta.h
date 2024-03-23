@@ -16,14 +16,14 @@ class Cuenta {
         Cuenta();
         Cuenta(int, Cliente);
         virtual ~Cuenta();
-        int getNumeroCuenta();
+        int getNumeroCuenta() const;
         void setNumeroCuenta(int);
         Cliente getCliente();
         void setCliente(Cliente);
         bool agregarAbono(Abono*);
-        Abono **getLstAbonos();
-        float getSaldo();
-        int getContadorAbonos();
+        Abono *const *getLstAbonos() const;
+        float getSaldo() const;
+        int getContadorAbonos() const;
 };
 
 #endif

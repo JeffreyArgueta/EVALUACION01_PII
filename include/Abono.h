@@ -9,8 +9,8 @@ class Abono {
     public:
         Abono(Fecha*, float);
         virtual ~Abono();
-        Fecha *getFechaAbono();
-        float getMontoAbono();
+        Fecha *getFechaAbono() const;
+        float getMontoAbono() const;
 };
 
 #endif

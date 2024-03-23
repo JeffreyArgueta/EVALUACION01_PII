@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 class Fecha {
     private:
         int dia;
@@ -13,7 +11,7 @@ class Fecha {
     public:
         Fecha(int, int, int);
         virtual ~Fecha();
-        void mostrarFecha();
+        void mostrarFecha() const;
 };
 
 #endif

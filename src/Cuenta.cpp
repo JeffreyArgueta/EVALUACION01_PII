@@ -1,22 +1,12 @@
 #include "../include/Cuenta.h"
-#define DA 5
 
-Cuenta::Cuenta() : cliente(Cliente(0,"","")) {
-    this->numeroCuenta = 0;
-    this->saldo = 0;
-    this->contadorAbonos = 0;
-}
+Cuenta::Cuenta() : cliente(Cliente(0,"","")) {}
 
-Cuenta::Cuenta(int nc = 0, Cliente c = Cliente(0,"","")) : cliente(c) {
-    this->numeroCuenta = nc;
-    this->cliente = c;
-    this->saldo = 0;
-    this->contadorAbonos = 0;
-}
+Cuenta::Cuenta(int nc, Cliente c) : numeroCuenta(nc), cliente(c), saldo(0), contadorAbonos(0) {}
 
 Cuenta::~Cuenta() {}
 
-int Cuenta::getNumeroCuenta() {
+int Cuenta::getNumeroCuenta() const {
     return this->numeroCuenta;
 }
 
@@ -33,7 +23,7 @@ void Cuenta::setCliente(Cliente sc) {
 }
 
 bool Cuenta::agregarAbono(Abono *ab) {
-    if (this->contadorAbonos < DA) {
+    if (ab != nullptr) {
         this->lstAbonos[this->contadorAbonos] = ab;
         this->saldo += ab->getMontoAbono();
         this->contadorAbonos++;
@@ -42,14 +32,14 @@ bool Cuenta::agregarAbono(Abono *ab) {
     return false;
 }
 
-Abono **Cuenta::getLstAbonos() {
+Abono *const *Cuenta::getLstAbonos() const {
     return this->lstAbonos;
 }
 
-float Cuenta::getSaldo() {
+float Cuenta::getSaldo() const {
     return this->saldo;
 }
 
-int Cuenta::getContadorAbonos() {
+int Cuenta::getContadorAbonos() const {
     return this->contadorAbonos;
 }

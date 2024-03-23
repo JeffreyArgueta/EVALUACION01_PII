@@ -1,15 +1,7 @@
 {
     "files.associations": {
-        "*.cpp": "cpp",
-        "*.h": "cpp",
         "iostream": "cpp",
-        "string": "cpp",
         "ostream": "cpp",
-        "new": "cpp",
-        "ios": "cpp",
-        "iomanip": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "disabled",
-    "editor.guides.bracketPairs": true,
-    "C_Cpp.default.includePath": ["${workspaceFolder}/include"]
+        "new": "cpp"
+    }
 }

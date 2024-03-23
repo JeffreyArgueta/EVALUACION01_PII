@@ -2,21 +2,19 @@
 #define CLIENTE_H
 
 #include <iostream>
-#include <string.h>
-
-using namespace std;
+#include <string>
 
 class Cliente {
     private:
         int idCliente;
-        string nombre;
-        string apellido;
+        std::string nombre;
+        std::string apellido;
     public:
-        Cliente(int, string, string);
+        Cliente(int, std::string, std::string);
         virtual ~Cliente();
-        int getIdCliente();
-        string getNombre();
-        string getApellido();
+        int getIdCliente() const;
+        std::string getNombre() const;
+        std::string getApellido() const;
 };
 
 #endif
